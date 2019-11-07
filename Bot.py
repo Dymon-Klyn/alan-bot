@@ -9,7 +9,7 @@ bot = commands.Bot(command_prefix = "+")
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name="type +alan"))
+    await bot.change_presence(status=discord.Status.idle, activity=discord.Game("type +alan"))
 
 @bot.command(name="alan", help = "response with a verse from the bible")
 async def send_verse(ctx):
