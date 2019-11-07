@@ -1,10 +1,15 @@
 import requests
+import discord
 from discord.ext import commands
 
 def get_verse():
     return requests.get("http://www.ourmanna.com/verses/api/get?format=text&order=random").text.replace("God", "Alan")
 
 bot = commands.Bot(command_prefix = "+")
+
+@bot.event
+async def on_ready():
+    await bot.change_presence(game=discord.Game(name="type +alan"))
 
 @bot.command(name="alan", help = "response with a verse from the bible")
 async def send_verse(ctx):
